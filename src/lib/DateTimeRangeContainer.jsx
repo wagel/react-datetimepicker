@@ -59,10 +59,7 @@ const styles = `
   }
 
   .rangebuttontextstyle {
-    padding-left: 12px;
-    padding-top: 3px;
-    padding-bottom: 3px;
-    padding-right: 12px;
+    padding: 5px 12px;
   }
 
   .fromDateTimeContainer {
@@ -77,7 +74,7 @@ const styles = `
   .dateTimeLabel {
     text-align: center;
     font-weight: bold;
-    padding-bottom: 5px;
+    padding: 5px;
   }
 
   .inputDate {
@@ -207,6 +204,57 @@ const styles = `
     background-color: #12bc00;
     border-radius: 50%;
     display: inline-block;
+  }
+
+  .fromDateHourContainer, 
+  .toDateHourContainer {
+    background: #212734;
+    border-radius: 20px;
+    padding: 5px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  input {
+    background: #303a4d;
+    color: #fff;
+    border-radius: 20px;
+    font-size: 14px;
+    padding: 0 10px;
+    border: none;
+    text-align: center;
+  }
+
+  .timeContainer {
+    display: flex;
+    justify-content: center;
+  }
+  .timeSelectContainer {
+    background: #303a4d;
+    border-radius: 20px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 10px;
+  }
+  select {
+    border: none;
+    background: none;
+    color: #fff;
+    border-radius: 20px;
+  }
+  .monthYearContainer select {
+    background: none;
+    height: 30px;
+  }
+
+  .monthYearContainer {
+    background: #212734;
+    border-radius: 20px;
+    padding: 5px 10px;
+    margin-bottom: 10px;
   }
 `;
 

@@ -3,7 +3,7 @@ import { Glyphicon } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import momentPropTypes from 'react-moment-proptypes';
 import { generateHours, generateMinutes } from '../utils/TimeFunctionUtils';
-import {addFocusStyle, darkTheme, lightTheme} from '../utils/StyleUtils';
+import { addFocusStyle, darkTheme, lightTheme } from '../utils/StyleUtils';
 
 class TimeField extends React.Component {
   constructor(props) {
@@ -21,8 +21,8 @@ class TimeField extends React.Component {
   }
 
   generateHourSelectValues() {
-    let hours = generateHours();
-    let selectValues = [];
+    const hours = generateHours();
+    const selectValues = [];
     for (let i = 0; i < hours.length; i++) {
       selectValues.push(
         <option key={i} value={i}>
@@ -34,8 +34,8 @@ class TimeField extends React.Component {
   }
 
   generateMinuteSelectValues() {
-    let minutes = generateMinutes();
-    let selectValues = [];
+    const minutes = generateMinutes();
+    const selectValues = [];
     for (let i = 0; i < minutes.length; i++) {
       selectValues.push(
         <option key={i} value={i}>
@@ -47,19 +47,11 @@ class TimeField extends React.Component {
   }
 
   handleHourChange(event) {
-    this.props.timeChangeCallback(
-      parseInt(event.target.value),
-      this.props.date.minute(),
-      this.props.mode,
-    );
+    this.props.timeChangeCallback(parseInt(event.target.value), this.props.date.minute(), this.props.mode);
   }
 
   handleMinuteChange(event) {
-    this.props.timeChangeCallback(
-      this.props.date.hour(),
-      parseInt(event.target.value),
-      this.props.mode,
-    );
+    this.props.timeChangeCallback(this.props.date.hour(), parseInt(event.target.value), this.props.mode);
   }
 
   hourFocus() {
@@ -79,20 +71,20 @@ class TimeField extends React.Component {
   }
 
   renderSelectField(valueInput, onChangeInput, optionsInput, id) {
-    let theme = this.props.darkMode ? darkTheme : lightTheme;
+    const theme = this.props.darkMode ? darkTheme : lightTheme;
     return (
-      <select id={id + '_' + this.props.mode} style={theme} value={valueInput} onChange={onChangeInput}>
+      <select id={`${id}_${this.props.mode}`} value={valueInput} onChange={onChangeInput}>
         {optionsInput}
       </select>
     );
   }
 
   render() {
-    let glyphColor = this.props.darkMode ? '#FFFFFF' : '#555';
-    let hours = this.generateHourSelectValues();
-    let minutes = this.generateMinuteSelectValues();
-    let hour = this.props.date.hour();
-    let minute = this.props.date.minute();
+    const glyphColor = this.props.darkMode ? '#FFFFFF' : '#555';
+    const hours = this.generateHourSelectValues();
+    const minutes = this.generateMinuteSelectValues();
+    const hour = this.props.date.hour();
+    const minute = this.props.date.minute();
     let hourFocusStyle = {};
     hourFocusStyle = addFocusStyle(this.state.hourFocus, hourFocusStyle);
     let minuteFocusStyle = {};
@@ -101,12 +93,7 @@ class TimeField extends React.Component {
     return (
       <div className="timeContainer">
         <div className="timeSelectContainer">
-          <div
-            className="multipleContentOnLine"
-            onFocus={this.hourFocus}
-            onBlur={this.hourBlur}
-            style={hourFocusStyle}
-          >
+          <div className="multipleContentOnLine" onFocus={this.hourFocus} onBlur={this.hourBlur} style={hourFocusStyle}>
             {this.renderSelectField(hour, this.handleHourChange, hours, 'Hour')}
           </div>
           <div className="multipleContentOnLine">:</div>
@@ -119,7 +106,7 @@ class TimeField extends React.Component {
             {this.renderSelectField(minute, this.handleMinuteChange, minutes, 'Minutes')}
           </div>
         </div>
-        <Glyphicon style={{color: glyphColor}} className="timeIconStyle" glyph="time" />
+        <Glyphicon style={{ color: glyphColor }} className="timeIconStyle" glyph="time" />
       </div>
     );
   }

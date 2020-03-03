@@ -149,7 +149,7 @@ class Calendar extends React.Component {
 
     let fourtyTwoDays = getFourtyTwoDays(this.state.month, this.state.year, sundayFirst);
     return (
-      <div>
+      <div className="calendarContainer">
         <MonthYearSelector
           months={months}
           years={years}

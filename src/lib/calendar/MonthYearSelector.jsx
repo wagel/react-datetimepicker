@@ -1,7 +1,7 @@
 import React from 'react';
 import { Glyphicon } from 'react-bootstrap';
 import PropTypes from 'prop-types';
-import {addFocusStyle, darkTheme, lightTheme} from '../utils/StyleUtils';
+import { addFocusStyle, darkTheme, lightTheme } from '../utils/StyleUtils';
 
 class MonthYearSelector extends React.Component {
   constructor(props) {
@@ -42,37 +42,22 @@ class MonthYearSelector extends React.Component {
   }
 
   mapToOption(variableArray) {
-    return variableArray.map(function(varInstance, i) {
-      return <option key={i}>{varInstance}</option>;
-    });
+    return variableArray.map((varInstance, i) => <option key={i}>{varInstance}</option>);
   }
 
   createGlyph(icon, onClickHandler, previous, next) {
-    return (
-      <Glyphicon
-        glyph={icon}
-        style={{ cursor: 'pointer' }}
-        onClick={() => onClickHandler(previous, next)}
-      />
-    );
+    return <div className="glyphicon" style={{ width: "100%", cursor: 'pointer', transform: icon === "chevron-left" ? "rotate(180deg)" : "", display: "flex", alignItems: "center", justifyContent: "center" }} onClick={() => onClickHandler(previous, next)}>
+      <svg width="8" height="14" xmlns="http://www.w3.org/2000/svg"><path d="M0 1.352v11.296c0 1.202 1.3932 1.8042 2.2078.954l5.4134-5.648c.505-.5269.505-1.3813 0-1.9082L2.2078.3978C1.3932-.452 0 .15 0 1.3521" fill="#FFF" fill-rule="evenodd"/></svg>
+    </div>;
+    // return <Glyphicon glyph={icon} style={{ cursor: 'pointer' }} onClick={() => onClickHandler(previous, next)} />;
   }
 
   render() {
-    let months = this.createCalendarMonths(this.props.months);
-    let years = this.createYears(this.props.years);
-    let theme = this.props.darkMode ? darkTheme : lightTheme;
-    let leftArrow = this.createGlyph(
-      'chevron-left',
-      this.props.changeMonthArrowsCallback,
-      true,
-      false,
-    );
-    let rightArrow = this.createGlyph(
-      'chevron-right',
-      this.props.changeMonthArrowsCallback,
-      false,
-      true,
-    );
+    const months = this.createCalendarMonths(this.props.months);
+    const years = this.createYears(this.props.years);
+    const theme = this.props.darkMode ? darkTheme : lightTheme;
+    const leftArrow = this.createGlyph('chevron-left', this.props.changeMonthArrowsCallback, true, false);
+    const rightArrow = this.createGlyph('chevron-right', this.props.changeMonthArrowsCallback, false, true);
     let monthFocusStyle = {};
     monthFocusStyle = addFocusStyle(this.state.monthFocus, monthFocusStyle);
     let yearFocusStyle = {};
@@ -88,25 +73,18 @@ class MonthYearSelector extends React.Component {
           style={monthFocusStyle}
         >
           <select
-            id={'MonthSelector_' + this.props.mode}
+            id={`MonthSelector_${this.props.mode}`}
             value={this.props.months[this.props.month]}
             onChange={this.props.changeMonthCallback}
-            style={theme}
           >
             {months}
           </select>
         </div>
-        <div
-          className="multipleContentOnLine"
-          onFocus={this.yearFocus}
-          onBlur={this.yearBlur}
-          style={yearFocusStyle}
-        >
+        <div className="multipleContentOnLine" onFocus={this.yearFocus} onBlur={this.yearBlur} style={yearFocusStyle}>
           <select
-            id={'YearSelector_' + this.props.mode}
+            id={`YearSelector_${this.props.mode}`}
             value={this.props.year}
             onChange={this.props.changeYearCallback}
-            style={theme}
           >
             {years}
           </select>
