@@ -2,7 +2,7 @@ import moment from 'moment';
 import { ModeEnum } from '../DateTimeRangePicker';
 
 export const generateHours = () => {
-  let hours = [];
+  const hours = [];
   for (let i = 0; i < 24; i++) {
     hours.push(i);
   }
@@ -10,7 +10,7 @@ export const generateHours = () => {
 };
 
 export const generateMinutes = () => {
-  let minutes = [];
+  const minutes = [];
   for (let i = 0; i < 60; i++) {
     if (i < 10) {
       minutes.push(`0${i.toString()}`);
@@ -24,14 +24,14 @@ export const generateMinutes = () => {
 function workOutMonthYear(date, secondDate, mode, pastSearchFriendly, smartMode) {
   // If both months are different months then
   // allow normal display in the calendar
-  let selectedMonth = date.month();
-  let otherMonth = secondDate.month();
+  const selectedMonth = date.month();
+  const otherMonth = secondDate.month();
   if (selectedMonth !== otherMonth) {
     return date;
   }
   // If pastSearch Friendly mode is on and both months are the same and the same year
   // have "end"/right as the month and "start"/left as -1 month
-  else if (date.year() === secondDate.year() && mode === ModeEnum.start && pastSearchFriendly && smartMode) {
+  if (date.year() === secondDate.year() && mode === ModeEnum.start && pastSearchFriendly && smartMode) {
     let lastMonth = JSON.parse(JSON.stringify(date));
     lastMonth = moment(lastMonth);
     lastMonth.subtract(1, 'month');
@@ -39,14 +39,13 @@ function workOutMonthYear(date, secondDate, mode, pastSearchFriendly, smartMode)
   }
   // If pastSearch Friendly mode is off and both months are the same and the same year
   // have "end"/right as the month and "start"/left as +1 month
-  else if (date.year() === secondDate.year() && mode === ModeEnum.end && !pastSearchFriendly && smartMode) {
+  if (date.year() === secondDate.year() && mode === ModeEnum.end && !pastSearchFriendly && smartMode) {
     let lastMonth = JSON.parse(JSON.stringify(date));
     lastMonth = moment(lastMonth);
     lastMonth.add(1, 'month');
     return lastMonth;
-  } else {
-    return date;
   }
+  return date;
 }
 
 export const getMonth = (date, secondDate, mode, pastSearchFriendly, smartMode) =>
@@ -56,8 +55,8 @@ export const getYear = (date, secondDate, mode, pastSearchFriendly, smartMode) =
   workOutMonthYear(date, secondDate, mode, pastSearchFriendly, smartMode).year();
 
 const getDaysBeforeStartMonday = firstDayOfMonth => {
-  let fourtyTwoDays = [];
-  let dayBeforeFirstDayOfMonth = firstDayOfMonth.day() - 1; // We dont want to include the first day of the new month
+  const fourtyTwoDays = [];
+  const dayBeforeFirstDayOfMonth = firstDayOfMonth.day() - 1; // We dont want to include the first day of the new month
   // Case whereby day before is a Saturday (6) and we require Saturday back to Monday for that week
   if (dayBeforeFirstDayOfMonth === -1) {
     for (let i = 6; i > 0; i--) {
@@ -86,8 +85,8 @@ const getDaysBeforeStartMonday = firstDayOfMonth => {
 };
 
 const getDaysBeforeStartSunday = firstDayOfMonth => {
-  let fourtyTwoDays = [];
-  let dayBeforeFirstDayOfMonth = firstDayOfMonth.day() - 1; // We dont want to include the first day of the new month
+  const fourtyTwoDays = [];
+  const dayBeforeFirstDayOfMonth = firstDayOfMonth.day() - 1; // We dont want to include the first day of the new month
 
   // Case whereby we need all previous week days
   if (dayBeforeFirstDayOfMonth === -1) {
@@ -111,14 +110,13 @@ const getDaysBeforeStartSunday = firstDayOfMonth => {
 const getDaysBeforeStart = (firstDayOfMonth, sundayFirst) => {
   if (!sundayFirst) {
     return getDaysBeforeStartMonday(firstDayOfMonth);
-  } else {
-    return getDaysBeforeStartSunday(firstDayOfMonth);
   }
+  return getDaysBeforeStartSunday(firstDayOfMonth);
 };
 
 export const getFourtyTwoDays = (initMonth, initYear, sundayFirst) => {
   let fourtyTwoDays = [];
-  let firstDayOfMonth = moment(new Date(initYear, initMonth, 1));
+  const firstDayOfMonth = moment(new Date(initYear, initMonth, 1));
 
   fourtyTwoDays = getDaysBeforeStart(firstDayOfMonth, sundayFirst);
   // Add in all days this month
@@ -126,7 +124,7 @@ export const getFourtyTwoDays = (initMonth, initYear, sundayFirst) => {
     fourtyTwoDays.push(firstDayOfMonth.clone().add(i, 'd'));
   }
   // Add in all days at the end of the month until last day of week seen
-  let lastDayOfMonth = moment(new Date(initYear, initMonth, firstDayOfMonth.daysInMonth()));
+  const lastDayOfMonth = moment(new Date(initYear, initMonth, firstDayOfMonth.daysInMonth()));
   let toAdd = 1;
   let gotAllDays = false;
   while (!gotAllDays) {
@@ -151,101 +149,99 @@ export const isInbetweenDates = (isStartDate, dayToFindOut, start, end) => {
 };
 
 export const isValidTimeChange = (mode, date, start, end) => {
-  let modeStartAndDateSameOrBeforeStart = mode === 'start' && date.isSameOrBefore(end);
-  let modeEndAndDateSameOrAfterEnd = mode === 'end' && date.isSameOrAfter(start);
+  const modeStartAndDateSameOrBeforeStart = mode === 'start' && date.isSameOrBefore(end);
+  const modeEndAndDateSameOrAfterEnd = mode === 'end' && date.isSameOrAfter(start);
   return modeStartAndDateSameOrBeforeStart || modeEndAndDateSameOrAfterEnd;
 };
 
 export const startDateStyle = () => ({
-  borderRadius: '4px 0 0 4px',
+  borderRadius: '20px 0 0 20px',
   borderColour: 'transparent',
   color: '#fff',
-  backgroundColor: '#357abd',
+  backgroundColor: '#2975A8',
   cursor: 'pointer',
 });
 
 export const endDateStyle = () => ({
-  borderRadius: '0 4px 4px 0',
+  borderRadius: '0 20px 20px 0',
   borderColour: 'transparent',
   color: '#fff',
-  backgroundColor: '#357abd',
+  backgroundColor: '#2975A8',
   cursor: 'pointer',
 });
 
 export const inBetweenStyle = () => ({
   borderRadius: '0',
   borderColour: 'transparent',
-  color: '#000',
-  backgroundColor: '#ebf4f8',
+  color: '#212734',
+  backgroundColor: '#BFEEFF',
   cursor: 'pointer',
 });
 
 export const normalCellStyle = darkMode => {
-  let color = darkMode ? 'white' : 'black';
+  const color = darkMode ? 'white' : '#212734';
   return {
     borderRadius: '0 0 0 0',
     borderColour: 'transparent',
-    color: color,
+    color,
     backgroundColor: '',
   };
 };
 
 export const hoverCellStyle = (between, darkMode) => {
-  let borderRadius = '4px 4px 4px 4px';
-  let color = darkMode ? 'white' : 'black';
-  let backgroundColor = darkMode ? 'rgb(53, 122, 189)' : '#eee';
+  let borderRadius = '20px 20px 20px 20px';
+  const color = darkMode ? 'white' : '#212734';
+  const backgroundColor = darkMode ? '#00BDFF' : '#eee';
   if (between) {
     borderRadius = '0 0 0 0';
   }
   return {
-    borderRadius: borderRadius,
+    borderRadius,
     borderColour: 'transparent',
-    color: color,
-    backgroundColor: backgroundColor,
+    color,
+    backgroundColor,
     cursor: 'pointer',
   };
 };
 
 export const greyCellStyle = darkMode => {
-  let color = darkMode ? '#ffffff' : '#999';
-  let backgroundColor = darkMode ? '#777777' : '#fff';
-  let opacity = darkMode ? '0.5' : '0.25';
-  let borderRadius = '4px 4px 4px 4px';
+  const color = darkMode ? '#ffffff' : '#999';
+  const backgroundColor = darkMode ? '#818ea5' : '#fff';
+  const opacity = darkMode ? '0.5' : '0.25';
+  const borderRadius = '0';
   return {
-    borderRadius: borderRadius,
+    borderRadius,
     borderColour: 'transparent',
-    color: color,
-    backgroundColor: backgroundColor,
+    color,
+    backgroundColor,
     cursor: 'pointer',
-    opacity: opacity,
+    opacity,
   };
 };
 
 export const invalidStyle = darkMode => {
-  let style = greyCellStyle(darkMode);
+  const style = greyCellStyle(darkMode);
   style.cursor = 'not-allowed';
   return style;
 };
 
 export const rangeButtonSelectedStyle = () => ({
-  color: '#f5f5f5',
-  fontSize: '13px',
-  border: '1px solid #f5f5f5',
-  borderRadius: '4px',
+  color: '#FFFFFF',
+  fontSize: '14px',
+  borderRadius: '20px',
   cursor: 'pointer',
   marginBottom: '8px',
   marginLeft: '4px',
   marginRight: '4px',
   marginTop: '4px',
-  backgroundColor: '#08c',
+  backgroundColor: '#2975A8',
 });
 
 export const rangeButtonStyle = () => ({
-  color: '#08c',
-  fontSize: '13px',
-  backgroundColor: '#f5f5f5',
-  border: '1px solid #f5f5f5',
-  borderRadius: '4px',
+  color: '#FFFFFF',
+  fontSize: '14px',
+  backgroundColor: '#212734',
+  borderRadius: '20px',
   cursor: 'pointer',
   marginBottom: '8px',
   marginLeft: '4px',

@@ -1,5 +1,5 @@
 export const addFocusStyle = (focused, currentStyle) => {
-  let style = JSON.parse(JSON.stringify(currentStyle));
+  const style = JSON.parse(JSON.stringify(currentStyle));
   if (focused) {
     style.outline = 'cornflowerblue';
     style.outlineStyle = 'auto';
@@ -10,7 +10,7 @@ export const addFocusStyle = (focused, currentStyle) => {
 };
 
 const white = '#FFFFFF';
-const black = '#161617';
+const black = '#303a4d';
 export const lightTheme = {
   background: white,
   color: black,

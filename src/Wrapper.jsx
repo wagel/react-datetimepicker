@@ -62,6 +62,7 @@ class Wrapper extends React.Component {
           applyCallback={this.applyCallback}
           rangeCallback={this.rangeCallback}
           smartMode
+          darkMode
         >
           <FormControl
             id="formControlsTextB"
@@ -99,6 +100,7 @@ class Wrapper extends React.Component {
               local={local}
               applyCallback={this.applyCallback}
               smartMode
+              darkMode
             >
               <FormControl
                 id="formControlsTextB"
@@ -143,6 +145,7 @@ class Wrapper extends React.Component {
               applyCallback={this.applyCallback}
               smartMode
               noMobileMode
+              darkMode
             >
               <FormControl
                 id="formControlsTextB"
@@ -187,6 +190,7 @@ class Wrapper extends React.Component {
               applyCallback={this.applyCallback}
               smartMode
               forceMobileMode
+              darkMode
             >
               <FormControl
                 id="formControlsTextB"
@@ -229,6 +233,7 @@ class Wrapper extends React.Component {
               applyCallback={this.applyCallback}
               smartMode
               leftMode
+              darkMode
             >
               <FormControl
                 id="formControlsTextB"
@@ -263,6 +268,7 @@ class Wrapper extends React.Component {
           autoApply
           descendingYears={descendingYears}
           years={[2010, 2020]}
+          darkMode
         >
           <FormControl
             id="formControlsTextB"
@@ -303,6 +309,7 @@ class Wrapper extends React.Component {
           autoApply
           descendingYears={descendingYears}
           years={[2010, 2020]}
+          darkMode
         >
           <FormControl
             id="formControlsTextB"
@@ -388,6 +395,7 @@ class Wrapper extends React.Component {
           years={[2010, 2020]}
           pastSearchFriendly
           smartMode
+          darkMode
         >
           <FormControl
             id="formControlsTextB"
@@ -410,7 +418,7 @@ class Wrapper extends React.Component {
 
   renderStandalone(ranges, local, maxDate, descendingYears) {
     return (
-      <div id="DateTimeRangeContainerStandalone">
+      <div id="DateTimeRangeContainerStandalone" style={{ background: '#303a4d', color: '#fff' }}>
         <br />
         <p>
           {' '}
@@ -429,6 +437,7 @@ class Wrapper extends React.Component {
           descendingYears={descendingYears}
           years={[2010, 2020]}
           standalone
+          darkMode
           style={{
             standaloneLayout: { display: 'flex', maxWidth: 'fit-content' },
           }}

@@ -11,29 +11,31 @@ class ActiveNotifier extends React.Component {
   }
 
   render() {
-    let selectingModeFrom = this.props.selectingModeFrom;
-    let mode = this.props.mode;
-    let startDotStyle =
-      this.props.style && this.props.style.fromDot ? this.props.style.fromDot : { backgroundColor: '#12bc00' };
-    let endDotStyle =
-      this.props.style && this.props.style.toDot ? this.props.style.toDot : { backgroundColor: '#D70022' };
-    let startNotifierID = 'startNotifierID';
-    let endNotifierID = 'endNotifierID';
-    let local = this.props.local;
+    const { selectingModeFrom } = this.props;
+    const { mode } = this.props;
+    const startDotStyle =
+      this.props.style && this.props.style.fromDot ? this.props.style.fromDot : { backgroundColor: '#22CC7A' };
+    const endDotStyle =
+      this.props.style && this.props.style.toDot ? this.props.style.toDot : { backgroundColor: '#FF5B7D' };
+    const startNotifierID = 'startNotifierID';
+    const endNotifierID = 'endNotifierID';
+    const { local } = this.props;
     if (this.props.smartMode) {
       if (selectingModeFrom && mode === 'start') {
-        let label = local && local.selectingFrom ? local.selectingFrom : 'Selecting From';
+        const label = local && local.selectingFrom ? local.selectingFrom : 'Selecting From';
         return this.getDotDiv(`${label} `, startDotStyle, startNotifierID);
-      } else if (!selectingModeFrom && mode === 'end') {
-        let label = local && local.selectingTo ? local.selectingTo : 'Selecting To';
+      }
+      if (!selectingModeFrom && mode === 'end') {
+        const label = local && local.selectingTo ? local.selectingTo : 'Selecting To';
         return this.getDotDiv(`${label} `, endDotStyle, endNotifierID);
       }
     } else {
       if (mode === 'start') {
-        let label = local && local.fromDate ? local.fromDate : 'From Date';
+        const label = local && local.fromDate ? local.fromDate : 'From Date';
         return this.getDotDiv(`${label} `, startDotStyle, startNotifierID);
-      } else if (mode === 'end') {
-        let label = local && local.toDate ? local.toDate : 'To Date';
+      }
+      if (mode === 'end') {
+        const label = local && local.toDate ? local.toDate : 'To Date';
         return this.getDotDiv(`${label} `, endDotStyle, endNotifierID);
       }
     }

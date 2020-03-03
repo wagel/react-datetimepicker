@@ -8,7 +8,7 @@ class ApplyCancelButtons extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      hoverColourApply: '#5cb85c',
+      hoverColourApply: '#22CC7A',
       hoverColourCancel: '#fff',
       applyFocus: false,
       cancelFocus: false,
@@ -32,15 +32,15 @@ class ApplyCancelButtons extends React.Component {
   }
 
   mouseEnterApply() {
-    this.setState({ hoverColourApply: '#3e8e41' });
+    this.setState({ hoverColourApply: '#15A761' });
   }
 
   mouseLeaveApply() {
-    this.setState({ hoverColourApply: '#5cb85c' });
+    this.setState({ hoverColourApply: '#22CC7A' });
   }
 
   mouseEnterCancel() {
-    this.setState({ hoverColourCancel: 'rgb(192, 185, 185)' });
+    this.setState({ hoverColourCancel: '#D9E0E7' });
   }
 
   mouseLeaveCancel() {
@@ -90,17 +90,7 @@ class ApplyCancelButtons extends React.Component {
     }
   }
 
-  renderButton(
-    className,
-    onMouseEnter,
-    onMouseLeave,
-    onClick,
-    style,
-    onKeyDown,
-    onFocus,
-    onBlur,
-    text,
-  ) {
+  renderButton(className, onMouseEnter, onMouseLeave, onClick, style, onKeyDown, onFocus, onBlur, text) {
     let styleLocal;
     if (text === 'Apply') {
       styleLocal = addFocusStyle(this.state.applyFocus, style);
@@ -127,7 +117,7 @@ class ApplyCancelButtons extends React.Component {
 
   getMaxDateBox() {
     if (this.props.maxDate) {
-      let label = (this.props.local && this.props.local.maxDate ? this.props.local.maxDate : 'Max Date')
+      const label = this.props.local && this.props.local.maxDate ? this.props.local.maxDate : 'Max Date';
       return (
         <div className="maxDateLabel">
           {label}: {this.props.maxDate.format(this.props.local.format)}
@@ -138,7 +128,7 @@ class ApplyCancelButtons extends React.Component {
 
   renderButtons() {
     let applyButton;
-    let closeButtonText = (this.props.local && this.props.local.close) ? this.props.local.close : 'Close';
+    let closeButtonText = this.props.local && this.props.local.close ? this.props.local.close : 'Close';
     if (!this.props.autoApply) {
       applyButton = this.renderButton(
         'buttonSeperator applyButton',
@@ -148,12 +138,12 @@ class ApplyCancelButtons extends React.Component {
         { backgroundColor: this.state.hoverColourApply },
         this.applyOnKeyPress,
         this.applyOnFocus,
-        this.applyOnBlur,        
-        (this.props.local && this.props.local.apply) ? this.props.local.apply : 'Apply'
+        this.applyOnBlur,
+        this.props.local && this.props.local.apply ? this.props.local.apply : 'Apply',
       );
-      closeButtonText = (this.props.local && this.props.local.cancel) ? this.props.local.cancel : 'Cancel';
+      closeButtonText = this.props.local && this.props.local.cancel ? this.props.local.cancel : 'Cancel';
     }
-    let closeButton = this.renderButton(
+    const closeButton = this.renderButton(
       'buttonSeperator cancelButton',
       this.mouseEnterCancel,
       this.mouseLeaveCancel,
@@ -173,11 +163,11 @@ class ApplyCancelButtons extends React.Component {
   }
 
   render() {
-    let maxDateBox = this.getMaxDateBox();
-    let buttons = this.renderButtons();
-    let style = undefined;
-    if(this.props.standalone){
-      style = {position:'unset', float:'right'};
+    const maxDateBox = this.getMaxDateBox();
+    const buttons = this.renderButtons();
+    let style;
+    if (this.props.standalone) {
+      style = { position: 'unset', float: 'right' };
     }
     return (
       <div id="buttonContainer" className="buttonContainer" style={style}>

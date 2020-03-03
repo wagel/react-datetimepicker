@@ -17,42 +17,41 @@ const styles = `
     display: flex;
     color: inherit;
     background-color: #fff;
-    border-radius: 4px;
-    padding: 4px;
+    border-radius: 20px;
+    padding: 10px;
     margin-top: 1px;
     top: 100px;
     left: 20px;
     max-width: 680px;
     z-index: 3001;
-    border: 1px solid rgba(0, 0, 0, 0.15);
     background-clip: padding-box;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
   }
   .daterangepicker:before,
   .daterangepicker:after {
     position: absolute;
     display: inline-block;
-    border-bottom-color: rgba(0, 0, 0, 0.2);
+    border-bottom-color: #303a4d;
     content: '';
+    left: 20px;
   }
   .daterangepicker:before {
     top: -7px;
     border-right: 7px solid transparent;
     border-left: 7px solid transparent;
-    border-bottom: 7px solid rgba(0, 0, 0, 0.15);
+    border-bottom: 7px solid #303a4d;
   }
   .daterangepicker:after {
     top: -6px;
     border-right: 6px solid transparent;
-    border-bottom: 6px solid rgba(0, 0, 0, 0.3);
+    border-bottom: 6px solid #303a4d;
     border-left: 6px solid transparent;
   }
 
   .daterangepickerleft:before {
-    right: 0px;
+    right: 20px;
   }
   .daterangepickerleft:after {
-    right: 0px;
+    right: 20px;
   }
 
   .rangecontainer {
@@ -67,14 +66,12 @@ const styles = `
   }
 
   .fromDateTimeContainer {
-    font-size: 13px;
+    font-size: 14px;
     width: 270px;
     margin: 4px;
   }
 
   .fromDateHourContainer {
-    border: 1px solid #f5f5f5;
-    border-radius: 4px;
   }
 
   .dateTimeLabel {
@@ -130,24 +127,22 @@ const styles = `
   }
 
   .applyButton {
-    border-color: #4cae4c;
+    border-color: #22CC7A;
     color: #fff;
-    font-size: 12px;
-    border-radius: 3px;
+    font-size: 14px;
+    border-radius: 20px;
     padding: 5px 10px;
     cursor: pointer;
     margin-right: 4px;
-    border: 1px solid #5cb85c;
   }
 
   .cancelButton {
     background-color: #fff;
-    color: #333;
-    font-size: 12px;
-    border-radius: 3px;
+    color: #212734;
+    font-size: 14px;
+    border-radius: 20px;
     padding: 5px 10px;
     cursor: pointer;
-    border: 1px solid #ccc;
   }
 
   .maxDateLabel {
