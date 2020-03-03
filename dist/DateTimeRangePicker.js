@@ -128,7 +128,6 @@ var DateTimeRangePicker = /*#__PURE__*/function (_React$Component) {
     value: function checkAutoApplyActiveApplyIfActive(startDate, endDate) {
       if (this.props.autoApply) {
         this.props.applyCallback(startDate, endDate);
-        this.props.changeVisibleState();
       }
     }
   }, {
@@ -163,6 +162,8 @@ var DateTimeRangePicker = /*#__PURE__*/function (_React$Component) {
       if (value !== 'Custom Range') {
         this.checkAutoApplyActiveApplyIfActive(start, end);
       }
+
+      this.props.changeVisibleState();
     }
   }, {
     key: "setToRangeValue",

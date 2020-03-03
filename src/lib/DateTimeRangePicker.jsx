@@ -69,7 +69,6 @@ class DateTimeRangePicker extends React.Component {
   checkAutoApplyActiveApplyIfActive(startDate, endDate) {
     if (this.props.autoApply) {
       this.props.applyCallback(startDate, endDate);
-      this.props.changeVisibleState();
     }
   }
 
@@ -96,6 +95,7 @@ class DateTimeRangePicker extends React.Component {
     if (value !== 'Custom Range') {
       this.checkAutoApplyActiveApplyIfActive(start, end);
     }
+    this.props.changeVisibleState();
   }
 
   setToRangeValue(startDate, endDate) {
