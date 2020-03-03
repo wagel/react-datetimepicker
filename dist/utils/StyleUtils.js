@@ -20,7 +20,7 @@ var addFocusStyle = function addFocusStyle(focused, currentStyle) {
 
 exports.addFocusStyle = addFocusStyle;
 var white = '#FFFFFF';
-var black = '#161617';
+var black = '#303a4d';
 var lightTheme = {
   background: white,
   color: black

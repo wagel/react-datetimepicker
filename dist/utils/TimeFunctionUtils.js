@@ -49,24 +49,28 @@ function workOutMonthYear(date, secondDate, mode, pastSearchFriendly, smartMode)
     return date;
   } // If pastSearch Friendly mode is on and both months are the same and the same year
   // have "end"/right as the month and "start"/left as -1 month
-  else if (date.year() === secondDate.year() && mode === _DateTimeRangePicker.ModeEnum.start && pastSearchFriendly && smartMode) {
-      var lastMonth = JSON.parse(JSON.stringify(date));
-      lastMonth = (0, _moment.default)(lastMonth);
-      lastMonth.subtract(1, 'month');
-      return lastMonth;
-    } // If pastSearch Friendly mode is off and both months are the same and the same year
-    // have "end"/right as the month and "start"/left as +1 month
-    else if (date.year() === secondDate.year() && mode === _DateTimeRangePicker.ModeEnum.end && !pastSearchFriendly && smartMode) {
-        var _lastMonth = JSON.parse(JSON.stringify(date));
 
-        _lastMonth = (0, _moment.default)(_lastMonth);
 
-        _lastMonth.add(1, 'month');
+  if (date.year() === secondDate.year() && mode === _DateTimeRangePicker.ModeEnum.start && pastSearchFriendly && smartMode) {
+    var lastMonth = JSON.parse(JSON.stringify(date));
+    lastMonth = (0, _moment.default)(lastMonth);
+    lastMonth.subtract(1, 'month');
+    return lastMonth;
+  } // If pastSearch Friendly mode is off and both months are the same and the same year
+  // have "end"/right as the month and "start"/left as +1 month
 
-        return _lastMonth;
-      } else {
-        return date;
-      }
+
+  if (date.year() === secondDate.year() && mode === _DateTimeRangePicker.ModeEnum.end && !pastSearchFriendly && smartMode) {
+    var _lastMonth = JSON.parse(JSON.stringify(date));
+
+    _lastMonth = (0, _moment.default)(_lastMonth);
+
+    _lastMonth.add(1, 'month');
+
+    return _lastMonth;
+  }
+
+  return date;
 }
 
 var getMonth = function getMonth(date, secondDate, mode, pastSearchFriendly, smartMode) {
@@ -142,9 +146,9 @@ var getDaysBeforeStartSunday = function getDaysBeforeStartSunday(firstDayOfMonth
 var getDaysBeforeStart = function getDaysBeforeStart(firstDayOfMonth, sundayFirst) {
   if (!sundayFirst) {
     return getDaysBeforeStartMonday(firstDayOfMonth);
-  } else {
-    return getDaysBeforeStartSunday(firstDayOfMonth);
   }
+
+  return getDaysBeforeStartSunday(firstDayOfMonth);
 };
 
 var getFourtyTwoDays = function getFourtyTwoDays(initMonth, initYear, sundayFirst) {
@@ -200,10 +204,10 @@ exports.isValidTimeChange = isValidTimeChange;
 
 var startDateStyle = function startDateStyle() {
   return {
-    borderRadius: '4px 0 0 4px',
+    borderRadius: '20px 0 0 20px',
     borderColour: 'transparent',
     color: '#fff',
-    backgroundColor: '#357abd',
+    backgroundColor: '#2975A8',
     cursor: 'pointer'
   };
 };
@@ -212,10 +216,10 @@ exports.startDateStyle = startDateStyle;
 
 var endDateStyle = function endDateStyle() {
   return {
-    borderRadius: '0 4px 4px 0',
+    borderRadius: '0 20px 20px 0',
     borderColour: 'transparent',
     color: '#fff',
-    backgroundColor: '#357abd',
+    backgroundColor: '#2975A8',
     cursor: 'pointer'
   };
 };
@@ -226,8 +230,8 @@ var inBetweenStyle = function inBetweenStyle() {
   return {
     borderRadius: '0',
     borderColour: 'transparent',
-    color: '#000',
-    backgroundColor: '#ebf4f8',
+    color: '#212734',
+    backgroundColor: '#BFEEFF',
     cursor: 'pointer'
   };
 };
@@ -235,7 +239,7 @@ var inBetweenStyle = function inBetweenStyle() {
 exports.inBetweenStyle = inBetweenStyle;
 
 var normalCellStyle = function normalCellStyle(darkMode) {
-  var color = darkMode ? 'white' : 'black';
+  var color = darkMode ? 'white' : '#212734';
   return {
     borderRadius: '0 0 0 0',
     borderColour: 'transparent',
@@ -247,9 +251,9 @@ var normalCellStyle = function normalCellStyle(darkMode) {
 exports.normalCellStyle = normalCellStyle;
 
 var hoverCellStyle = function hoverCellStyle(between, darkMode) {
-  var borderRadius = '4px 4px 4px 4px';
-  var color = darkMode ? 'white' : 'black';
-  var backgroundColor = darkMode ? 'rgb(53, 122, 189)' : '#eee';
+  var borderRadius = '20px 20px 20px 20px';
+  var color = darkMode ? 'white' : '#212734';
+  var backgroundColor = darkMode ? '#00BDFF' : '#eee';
 
   if (between) {
     borderRadius = '0 0 0 0';
@@ -268,9 +272,9 @@ exports.hoverCellStyle = hoverCellStyle;
 
 var greyCellStyle = function greyCellStyle(darkMode) {
   var color = darkMode ? '#ffffff' : '#999';
-  var backgroundColor = darkMode ? '#777777' : '#fff';
+  var backgroundColor = darkMode ? '#818ea5' : '#fff';
   var opacity = darkMode ? '0.5' : '0.25';
-  var borderRadius = '4px 4px 4px 4px';
+  var borderRadius = '0';
   return {
     borderRadius: borderRadius,
     borderColour: 'transparent',
@@ -293,16 +297,15 @@ exports.invalidStyle = invalidStyle;
 
 var rangeButtonSelectedStyle = function rangeButtonSelectedStyle() {
   return {
-    color: '#f5f5f5',
-    fontSize: '13px',
-    border: '1px solid #f5f5f5',
-    borderRadius: '4px',
+    color: '#FFFFFF',
+    fontSize: '14px',
+    borderRadius: '20px',
     cursor: 'pointer',
     marginBottom: '8px',
     marginLeft: '4px',
     marginRight: '4px',
     marginTop: '4px',
-    backgroundColor: '#08c'
+    backgroundColor: '#2975A8'
   };
 };
 
@@ -310,11 +313,10 @@ exports.rangeButtonSelectedStyle = rangeButtonSelectedStyle;
 
 var rangeButtonStyle = function rangeButtonStyle() {
   return {
-    color: '#08c',
-    fontSize: '13px',
-    backgroundColor: '#f5f5f5',
-    border: '1px solid #f5f5f5',
-    borderRadius: '4px',
+    color: '#FFFFFF',
+    fontSize: '14px',
+    backgroundColor: '#212734',
+    borderRadius: '20px',
     cursor: 'pointer',
     marginBottom: '8px',
     marginLeft: '4px',

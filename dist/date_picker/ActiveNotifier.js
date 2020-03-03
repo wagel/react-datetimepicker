@@ -55,10 +55,10 @@ var ActiveNotifier = /*#__PURE__*/function (_React$Component) {
       var selectingModeFrom = this.props.selectingModeFrom;
       var mode = this.props.mode;
       var startDotStyle = this.props.style && this.props.style.fromDot ? this.props.style.fromDot : {
-        backgroundColor: '#12bc00'
+        backgroundColor: '#22CC7A'
       };
       var endDotStyle = this.props.style && this.props.style.toDot ? this.props.style.toDot : {
-        backgroundColor: '#D70022'
+        backgroundColor: '#FF5B7D'
       };
       var startNotifierID = 'startNotifierID';
       var endNotifierID = 'endNotifierID';
@@ -68,7 +68,9 @@ var ActiveNotifier = /*#__PURE__*/function (_React$Component) {
         if (selectingModeFrom && mode === 'start') {
           var label = local && local.selectingFrom ? local.selectingFrom : 'Selecting From';
           return this.getDotDiv("".concat(label, " "), startDotStyle, startNotifierID);
-        } else if (!selectingModeFrom && mode === 'end') {
+        }
+
+        if (!selectingModeFrom && mode === 'end') {
           var _label = local && local.selectingTo ? local.selectingTo : 'Selecting To';
 
           return this.getDotDiv("".concat(_label, " "), endDotStyle, endNotifierID);
@@ -78,7 +80,9 @@ var ActiveNotifier = /*#__PURE__*/function (_React$Component) {
           var _label2 = local && local.fromDate ? local.fromDate : 'From Date';
 
           return this.getDotDiv("".concat(_label2, " "), startDotStyle, startNotifierID);
-        } else if (mode === 'end') {
+        }
+
+        if (mode === 'end') {
           var _label3 = local && local.toDate ? local.toDate : 'To Date';
 
           return this.getDotDiv("".concat(_label3, " "), endDotStyle, endNotifierID);

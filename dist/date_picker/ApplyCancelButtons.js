@@ -45,7 +45,7 @@ var ApplyCancelButtons = /*#__PURE__*/function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(ApplyCancelButtons).call(this, props));
     _this.state = {
-      hoverColourApply: '#5cb85c',
+      hoverColourApply: '#22CC7A',
       hoverColourCancel: '#fff',
       applyFocus: false,
       cancelFocus: false
@@ -76,21 +76,21 @@ var ApplyCancelButtons = /*#__PURE__*/function (_React$Component) {
     key: "mouseEnterApply",
     value: function mouseEnterApply() {
       this.setState({
-        hoverColourApply: '#3e8e41'
+        hoverColourApply: '#15A761'
       });
     }
   }, {
     key: "mouseLeaveApply",
     value: function mouseLeaveApply() {
       this.setState({
-        hoverColourApply: '#5cb85c'
+        hoverColourApply: '#22CC7A'
       });
     }
   }, {
     key: "mouseEnterCancel",
     value: function mouseEnterCancel() {
       this.setState({
-        hoverColourCancel: 'rgb(192, 185, 185)'
+        hoverColourCancel: '#D9E0E7'
       });
     }
   }, {
@@ -218,7 +218,7 @@ var ApplyCancelButtons = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var maxDateBox = this.getMaxDateBox();
       var buttons = this.renderButtons();
-      var style = undefined;
+      var style;
 
       if (this.props.standalone) {
         style = {
