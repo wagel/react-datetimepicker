@@ -87,7 +87,6 @@ var DateField = /*#__PURE__*/function (_React$Component) {
       })), _react.default.createElement(_reactBootstrap.FormControl, {
         className: "inputDate",
         id: "DateTimeInput_" + this.props.mode,
-        style: theme,
         type: "text",
         value: this.props.dateLabel,
         onChange: this.onChangeDateTextHandler,

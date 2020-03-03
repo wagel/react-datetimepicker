@@ -132,8 +132,7 @@ var TimeField = /*#__PURE__*/function (_React$Component) {
     value: function renderSelectField(valueInput, onChangeInput, optionsInput, id) {
       var theme = this.props.darkMode ? _StyleUtils.darkTheme : _StyleUtils.lightTheme;
       return _react.default.createElement("select", {
-        id: id + '_' + this.props.mode,
-        style: theme,
+        id: "".concat(id, "_").concat(this.props.mode),
         value: valueInput,
         onChange: onChangeInput
       }, optionsInput);

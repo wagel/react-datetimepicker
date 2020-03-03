@@ -191,7 +191,9 @@ var Calendar = /*#__PURE__*/function (_React$Component) {
       }
 
       var fourtyTwoDays = (0, _TimeFunctionUtils.getFourtyTwoDays)(this.state.month, this.state.year, sundayFirst);
-      return _react.default.createElement("div", null, _react.default.createElement(_MonthYearSelector.default, {
+      return _react.default.createElement("div", {
+        className: "calendarContainer"
+      }, _react.default.createElement(_MonthYearSelector.default, {
         months: months,
         years: years,
         month: this.state.month,

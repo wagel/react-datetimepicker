@@ -103,15 +103,28 @@ var MonthYearSelector = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "createGlyph",
     value: function createGlyph(icon, onClickHandler, previous, next) {
-      return _react.default.createElement(_reactBootstrap.Glyphicon, {
-        glyph: icon,
+      return _react.default.createElement("div", {
+        className: "glyphicon",
         style: {
-          cursor: 'pointer'
+          width: "100%",
+          cursor: 'pointer',
+          transform: icon === "chevron-left" ? "rotate(180deg)" : "",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center"
         },
         onClick: function onClick() {
           return onClickHandler(previous, next);
         }
-      });
+      }, _react.default.createElement("svg", {
+        width: "8",
+        height: "14",
+        xmlns: "http://www.w3.org/2000/svg"
+      }, _react.default.createElement("path", {
+        d: "M0 1.352v11.296c0 1.202 1.3932 1.8042 2.2078.954l5.4134-5.648c.505-.5269.505-1.3813 0-1.9082L2.2078.3978C1.3932-.452 0 .15 0 1.3521",
+        fill: "#FFF",
+        "fill-rule": "evenodd"
+      }))); // return <Glyphicon glyph={icon} style={{ cursor: 'pointer' }} onClick={() => onClickHandler(previous, next)} />;
     }
   }, {
     key: "render",
@@ -135,20 +148,18 @@ var MonthYearSelector = /*#__PURE__*/function (_React$Component) {
         onBlur: this.monthBlur,
         style: monthFocusStyle
       }, _react.default.createElement("select", {
-        id: 'MonthSelector_' + this.props.mode,
+        id: "MonthSelector_".concat(this.props.mode),
         value: this.props.months[this.props.month],
-        onChange: this.props.changeMonthCallback,
-        style: theme
+        onChange: this.props.changeMonthCallback
       }, months)), _react.default.createElement("div", {
         className: "multipleContentOnLine",
         onFocus: this.yearFocus,
         onBlur: this.yearBlur,
         style: yearFocusStyle
       }, _react.default.createElement("select", {
-        id: 'YearSelector_' + this.props.mode,
+        id: "YearSelector_".concat(this.props.mode),
         value: this.props.year,
-        onChange: this.props.changeYearCallback,
-        style: theme
+        onChange: this.props.changeYearCallback
       }, years)), _react.default.createElement("div", {
         className: "multipleContentOnLine rightChevron"
       }, rightArrow));
