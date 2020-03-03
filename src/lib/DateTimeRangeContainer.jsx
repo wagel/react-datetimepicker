@@ -17,7 +17,7 @@ const styles = `
     display: flex;
     color: inherit;
     background-color: #fff;
-    border-radius: 20px;
+    border-radius: 0 0 20px;
     padding: 10px;
     margin-top: 1px;
     top: 100px;
@@ -25,33 +25,6 @@ const styles = `
     max-width: 680px;
     z-index: 3001;
     background-clip: padding-box;
-  }
-  .daterangepicker:before,
-  .daterangepicker:after {
-    position: absolute;
-    display: inline-block;
-    border-bottom-color: #303a4d;
-    content: '';
-    left: 20px;
-  }
-  .daterangepicker:before {
-    top: -7px;
-    border-right: 7px solid transparent;
-    border-left: 7px solid transparent;
-    border-bottom: 7px solid #303a4d;
-  }
-  .daterangepicker:after {
-    top: -6px;
-    border-right: 6px solid transparent;
-    border-bottom: 6px solid #303a4d;
-    border-left: 6px solid transparent;
-  }
-
-  .daterangepickerleft:before {
-    right: 20px;
-  }
-  .daterangepickerleft:after {
-    right: 20px;
   }
 
   .rangecontainer {
@@ -310,21 +283,21 @@ class DateTimeRangeContainer extends React.Component {
       const containerMiddle = 144;
       const newY = childMiddle - containerMiddle;
       this.setState({
-        x: boundingClientRect.height + 5,
+        x: boundingClientRect.height,
         y: newY,
         screenWidthToTheRight: widthRightOfThis,
         containerClassName: 'daterangepicker',
       });
     } else if (this.props.leftMode) {
       this.setState({
-        x: boundingClientRect.height + 5,
+        x: boundingClientRect.height,
         y: -660,
         screenWidthToTheRight: widthRightOfThis,
         containerClassName: 'daterangepicker daterangepickerleft',
       });
     } else {
       this.setState({
-        x: boundingClientRect.height + 5,
+        x: boundingClientRect.height,
         y: 0,
         screenWidthToTheRight: widthRightOfThis,
         containerClassName: 'daterangepicker',
