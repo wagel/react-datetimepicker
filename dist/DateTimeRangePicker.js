@@ -128,6 +128,7 @@ var DateTimeRangePicker = /*#__PURE__*/function (_React$Component) {
     value: function checkAutoApplyActiveApplyIfActive(startDate, endDate) {
       if (this.props.autoApply) {
         this.props.applyCallback(startDate, endDate);
+        this.props.changeVisibleState();
       }
     }
   }, {
