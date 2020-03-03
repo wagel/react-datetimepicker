@@ -7,13 +7,13 @@ import { isFirefoxBelow53 } from './lib/utils/BrowserVersion';
 class Wrapper extends React.Component {
   constructor(props) {
     super(props);
-    let start = moment(new Date(2016, 8, 20, 0, 0, 0, 0));
-    let end = moment(start)
+    const start = moment(new Date(2016, 8, 20, 0, 0, 0, 0));
+    const end = moment(start)
       .add(5, 'days')
       .subtract(1, 'second');
     this.state = {
-      start: start,
-      end: end,
+      start,
+      end,
     };
 
     this.onClick = this.onClick.bind(this);
@@ -35,15 +35,15 @@ class Wrapper extends React.Component {
   }
 
   onClick() {
-    let newStart = moment(this.state.start).subtract(3, 'days');
+    const newStart = moment(this.state.start).subtract(3, 'days');
     // console.log("On Click Callback");
     // console.log(newStart.format("DD-MM-YYYY HH:mm"));
     this.setState({ start: newStart });
   }
 
   renderVanillaPicker(ranges, local, maxDate) {
-    let value = `${this.state.start.format('DD-MM-YYYY HH:mm')} - ${this.state.end.format('DD-MM-YYYY HH:mm')}`;
-    let firefoxBelow35 = isFirefoxBelow53();
+    const value = `${this.state.start.format('DD-MM-YYYY HH:mm')} - ${this.state.end.format('DD-MM-YYYY HH:mm')}`;
+    const firefoxBelow35 = isFirefoxBelow53();
     let disabled = true;
     if (firefoxBelow35) {
       disabled = false;
@@ -79,12 +79,12 @@ class Wrapper extends React.Component {
   }
 
   renderGridPicker(ranges, local, maxDate) {
-    let firefoxBelow35 = isFirefoxBelow53();
+    const firefoxBelow35 = isFirefoxBelow53();
     let disabled = true;
     if (firefoxBelow35) {
       disabled = false;
     }
-    let value = `${this.state.start.format('DD-MM-YYYY HH:mm')} - ${this.state.end.format('DD-MM-YYYY HH:mm')}`;
+    const value = `${this.state.start.format('DD-MM-YYYY HH:mm')} - ${this.state.end.format('DD-MM-YYYY HH:mm')}`;
     return (
       <Grid>
         <div onClick={this.onClick}> Click Me to test the Date Picker in its condensed form</div>
@@ -119,12 +119,12 @@ class Wrapper extends React.Component {
   }
 
   renderGridPickerNoMobileMode(ranges, local, maxDate) {
-    let firefoxBelow35 = isFirefoxBelow53();
+    const firefoxBelow35 = isFirefoxBelow53();
     let disabled = true;
     if (firefoxBelow35) {
       disabled = false;
     }
-    let value = `${this.state.start.format('DD-MM-YYYY HH:mm')} - ${this.state.end.format('DD-MM-YYYY HH:mm')}`;
+    const value = `${this.state.start.format('DD-MM-YYYY HH:mm')} - ${this.state.end.format('DD-MM-YYYY HH:mm')}`;
     return (
       <Grid>
         <div onClick={this.onClick}>
@@ -163,12 +163,12 @@ class Wrapper extends React.Component {
   }
 
   renderGridPickerForceMobileMode(ranges, local, maxDate) {
-    let firefoxBelow35 = isFirefoxBelow53();
+    const firefoxBelow35 = isFirefoxBelow53();
     let disabled = true;
     if (firefoxBelow35) {
       disabled = false;
     }
-    let value = `${this.state.start.format('DD-MM-YYYY HH:mm')} - ${this.state.end.format('DD-MM-YYYY HH:mm')}`;
+    const value = `${this.state.start.format('DD-MM-YYYY HH:mm')} - ${this.state.end.format('DD-MM-YYYY HH:mm')}`;
     return (
       <Grid>
         <div onClick={this.onClick}>
@@ -207,12 +207,12 @@ class Wrapper extends React.Component {
   }
 
   renderGridPickerLeftOpen(ranges, local, maxDate) {
-    let firefoxBelow35 = isFirefoxBelow53();
+    const firefoxBelow35 = isFirefoxBelow53();
     let disabled = true;
     if (firefoxBelow35) {
       disabled = false;
     }
-    let value = `${this.state.start.format('DD-MM-YYYY HH:mm')} - ${this.state.end.format('DD-MM-YYYY HH:mm')}`;
+    const value = `${this.state.start.format('DD-MM-YYYY HH:mm')} - ${this.state.end.format('DD-MM-YYYY HH:mm')}`;
     return (
       <Grid>
         <div onClick={this.onClick}> Click me to test the picker in open Left mode with mobile mode enabled</div>
@@ -248,7 +248,7 @@ class Wrapper extends React.Component {
   }
 
   renderPickerAutoApplySmartModeDisabled(ranges, local, maxDate, descendingYears) {
-    let value = `${this.state.start.format('DD-MM-YYYY HH:mm')} - ${this.state.end.format('DD-MM-YYYY HH:mm')}`;
+    const value = `${this.state.start.format('DD-MM-YYYY HH:mm')} - ${this.state.end.format('DD-MM-YYYY HH:mm')}`;
     return (
       <div id="DateTimeRangeContainerSmartModeDisabled">
         <br />
@@ -284,7 +284,7 @@ class Wrapper extends React.Component {
   }
 
   renderPickerAutoApplySmartModeDisabledSecondsIncluded(ranges, local, maxDate, descendingYears) {
-    let value = `${this.state.start.format('DD-MM-YYYY HH:mm:ss')} - ${this.state.end.format('DD-MM-YYYY HH:mm:ss')}`;
+    const value = `${this.state.start.format('DD-MM-YYYY HH:mm:ss')} - ${this.state.end.format('DD-MM-YYYY HH:mm:ss')}`;
     local = {
       format: 'DD-MM-YYYY HH:mm:ss',
       sundayFirst: false,
@@ -314,21 +314,19 @@ class Wrapper extends React.Component {
             value={value}
           />
         </DateTimeRangeContainer>
-        <div onClick={this.onClick}>
-          Click Me to test the Date Picker with Auto Apply and Seconds local format
-        </div>
+        <div onClick={this.onClick}>Click Me to test the Date Picker with Auto Apply and Seconds local format</div>
         <br />
       </div>
     );
   }
 
   renderPickerSmartModeDisabledCustomStyling(ranges, local, maxDate, descendingYears) {
-    let firefoxBelow35 = isFirefoxBelow53();
+    const firefoxBelow35 = isFirefoxBelow53();
     let disabled = true;
     if (firefoxBelow35) {
       disabled = false;
     }
-    let value = `${this.state.start.format('DD-MM-YYYY HH:mm')} - ${this.state.end.format('DD-MM-YYYY HH:mm')}`;
+    const value = `${this.state.start.format('DD-MM-YYYY HH:mm')} - ${this.state.end.format('DD-MM-YYYY HH:mm')}`;
     return (
       <div id="DateTimeRangeContainerCustomStyles">
         <br />
@@ -373,7 +371,7 @@ class Wrapper extends React.Component {
   }
 
   renderPickerAutoApplyPastFriendly(ranges, local, maxDate, descendingYears) {
-    let value = `${this.state.start.format('DD-MM-YYYY HH:mm')} - ${this.state.end.format('DD-MM-YYYY HH:mm')}`;
+    const value = `${this.state.start.format('DD-MM-YYYY HH:mm')} - ${this.state.end.format('DD-MM-YYYY HH:mm')}`;
     return (
       <div>
         <br />
@@ -414,7 +412,11 @@ class Wrapper extends React.Component {
     return (
       <div id="DateTimeRangeContainerStandalone">
         <br />
-        <p> <b>Standalone</b> DateTime picker. Values are {this.state.start.format('DD-MM-YYYY HH:mm')} and {this.state.end.format('DD-MM-YYYY HH:mm')} </p>
+        <p>
+          {' '}
+          <b>Standalone</b> DateTime picker. Values are {this.state.start.format('DD-MM-YYYY HH:mm')} and{' '}
+          {this.state.end.format('DD-MM-YYYY HH:mm')}{' '}
+        </p>
         <DateTimeRangeContainer
           ranges={ranges}
           start={this.state.start}
@@ -428,7 +430,7 @@ class Wrapper extends React.Component {
           years={[2010, 2020]}
           standalone
           style={{
-            standaloneLayout:{display:'flex', maxWidth:'fit-content'}
+            standaloneLayout: { display: 'flex', maxWidth: 'fit-content' },
           }}
         />
         <br />
@@ -437,12 +439,12 @@ class Wrapper extends React.Component {
   }
 
   render() {
-    let now = new Date();
-    let start = moment(new Date(now.getFullYear(), now.getMonth(), now.getDate(), 0, 0, 0, 0));
-    let end = moment(start)
+    const now = new Date();
+    const start = moment(new Date(now.getFullYear(), now.getMonth(), now.getDate(), 0, 0, 0, 0));
+    const end = moment(start)
       .add(1, 'days')
       .subtract(1, 'seconds');
-    let ranges = {
+    const ranges = {
       'Today Only': [moment(start), moment(end)],
       'Yesterday Only': [moment(start).subtract(1, 'days'), moment(end).subtract(1, 'days')],
       '3 Days': [moment(start).subtract(3, 'days'), moment(end)],
@@ -450,14 +452,14 @@ class Wrapper extends React.Component {
       '1 Week': [moment(start).subtract(7, 'days'), moment(end)],
       '2 Weeks': [moment(start).subtract(14, 'days'), moment(end)],
       '1 Month': [moment(start).subtract(1, 'months'), moment(end)],
-      '1st August 18': [moment("2018-08-01 00:00:00"), moment("2018-08-02 23:59:59")],
+      '1st August 18': [moment('2018-08-01 00:00:00'), moment('2018-08-02 23:59:59')],
       '1 Year': [moment(start).subtract(1, 'years'), moment(end)],
     };
-    let local = {
+    const local = {
       format: 'DD-MM-YYYY HH:mm',
       sundayFirst: false,
     };
-    let maxDate = moment(end).add(24, 'hour');
+    const maxDate = moment(end).add(24, 'hour');
     return (
       <div className="container">
         <h1>Welcome to the Advanced Date Time Picker Demo</h1>
