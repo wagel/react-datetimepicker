@@ -315,7 +315,7 @@ var rangeButtonStyle = function rangeButtonStyle() {
   return {
     color: '#FFFFFF',
     fontSize: '14px',
-    backgroundColor: '#212734',
+    backgroundColor: '#303a4d',
     borderRadius: '20px',
     cursor: 'pointer',
     marginBottom: '8px',

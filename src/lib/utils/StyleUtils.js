@@ -10,7 +10,7 @@ export const addFocusStyle = (focused, currentStyle) => {
 };
 
 const white = '#FFFFFF';
-const black = '#303a4d';
+const black = '#212734';
 export const lightTheme = {
   background: white,
   color: black,

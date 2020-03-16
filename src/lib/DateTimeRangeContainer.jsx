@@ -181,7 +181,7 @@ const styles = `
 
   .fromDateHourContainer, 
   .toDateHourContainer {
-    background: #212734;
+    background: #303a4d;
     border-radius: 20px;
     padding: 5px 10px;
     display: flex;
@@ -190,7 +190,7 @@ const styles = `
   }
 
   input {
-    background: #303a4d;
+    background: #212734;
     color: #fff;
     border-radius: 20px;
     font-size: 14px;
@@ -204,7 +204,7 @@ const styles = `
     justify-content: center;
   }
   .timeSelectContainer {
-    background: #303a4d;
+    background: #212734;
     border-radius: 20px;
     height: 30px;
     display: flex;
@@ -224,7 +224,7 @@ const styles = `
   }
 
   .monthYearContainer {
-    background: #212734;
+    background: #303a4d;
     border-radius: 20px;
     padding: 5px 10px;
     margin-bottom: 10px;
