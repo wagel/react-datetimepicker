@@ -17,9 +17,9 @@ const styles = `
     display: flex;
     color: inherit;
     background-color: #fff;
-    border-radius: 0 0 20px 20px;
+    border-radius: 20px;
     padding: 10px;
-    margin-top: 1px;
+    margin-top: 10px;
     top: 100px;
     left: 20px;
     max-width: 680px;
